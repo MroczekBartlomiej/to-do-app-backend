@@ -15,7 +15,18 @@ public class TaskService {
     @Autowired
     TaskRepository taskRepository;
 
+    public Task addTask(String listId, String description) {
+        log.info("New task: "+ listId + description);
+        return taskRepository.save(Task.builder().listId(listId).description(description).build());
+    }
+
     public Collection<Task> getTasksByListId(String listId) {
         return taskRepository.findByListId(listId);
     }
+
+    public void deleteTask(String taskId) {
+        log.info("ID TASK TO DELETE " + taskId);
+        taskRepository.delete(taskId);
+    }
+
 }

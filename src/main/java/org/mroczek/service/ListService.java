@@ -16,4 +16,8 @@ public class ListService {
     public List<ListOfTask> getAll() {
         return listOfTaskRepository.findAll();
     }
+
+    public void addList(String listName) {
+        listOfTaskRepository.save(ListOfTask.builder().name(listName).build());
+    }
 }
